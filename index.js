@@ -14,6 +14,11 @@ const sum = function (a) {
     }
   };
 };
+
+//ES6
+
+const sum1 = (a) => (b) => b ? sum1(a + b) : a;
+
 console.log(typeof sum); // function
 console.log('Recursive Sum', sum(2)(4)(6)());
 
