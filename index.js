@@ -89,6 +89,45 @@ Function.prototype.bindPolyfill = function (newObj) {
 const bindPolyfillprintName = PrintName.bindPolyfill(user);
 console.log('bindPolyfillprintName', bindPolyfillprintName()); //My name is  John
 
+//==================================================================================================
+
+/* 
+  To copy one object to another
+*/
+
+let person = {
+  firstName: 'John',
+  lastName: 'Doe',
+  address: {
+    street: 'North 1st street',
+    city: 'San Jose',
+    state: 'CA',
+    country: 'USA',
+  },
+};
+
+// using spread ... shallow copy
+let p1 = {
+  ...person,
+};
+
+// using  Object.assign() method - shallow copy
+let copiedPerson = Object.assign({}, person);
+
+copiedPerson.firstName = 'Jane'; // disconnected
+
+copiedPerson.address.street = 'Amphitheatre Parkway'; // connected
+copiedPerson.address.city = 'Mountain View'; // connected
+
+// using JSON - deep copy
+let p3 = JSON.parse(JSON.stringify(person));
+p3.address.city = 'Mountain View';
+p3.firstName = 'Jane'; // disconnected
+
+//lodash deep copy var deepCopy = _.cloneDeep(obj);
+
+//==================================================================================================
+
 // Write Javascript code!
 const appDiv = document.getElementById('app');
 appDiv.innerHTML = `<h1>JS Starter</h1>`;
